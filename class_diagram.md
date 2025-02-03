@@ -5,44 +5,6 @@ classDiagram
     class Player {
     }
 
-    class PlayerData {
-    }
-
-    class Ball {
-    }
-
-
-    class UI {
-    }
-
-    class MatchData {
-    }
-
-    class USOpen {
-    }
-
-    class Stadium {
-    }
-
-    class Player {
-    }
-
-    class AiInput {
-    }
-
-    class Court {
-    }
-
-    class World {
-    }
-
-    class SinglesMode {
-
-    }
-    
-    class GameMode {
-
-    }
 
     Player --> PlayerData : has
     Player --> InputMethod : uses
@@ -50,11 +12,12 @@ classDiagram
     InputMethod <|-- ControllerInput : implements
     InputMethod <|-- AiInput : implements
 
-    World <|-- USOpen : implements
+    TennisMatch --> TennisLocation : has
 
-    GameMode <|-- SinglesMatchMode : implements
-    GameMode <|-- TrainingMode : implements
-    SinglesMode --> MatchData : has
-    USOpen --> Stadium : has
+    TennisMatch <|-- SinglesMatch : implements
+    TennisMatch <|-- PracticeMatch : implements
+    TennisMatch --> MatchData : has
+    
+    TennisLocation <|-- Stadium : implements
     Stadium --> Court : has
 ```
