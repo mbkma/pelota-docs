@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://mbkma.github.io/pelota-docs'
 defaultLanguage = 'en'
 title = 'Pelota Documentation'
 theme = 'relearn'
