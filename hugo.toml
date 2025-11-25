@@ -1,0 +1,29 @@
+baseURL = 'https://example.org/'
+defaultLanguage = 'en'
+title = 'Pelota Documentation'
+theme = 'relearn'
+
+# Language configuration for multi-language support
+[languages]
+  [languages.en]
+    languageName = 'English'
+    weight = 1
+    contentDir = 'content/en'
+
+  [languages.de]
+    languageName = 'Deutsch'
+    weight = 2
+    contentDir = 'content/de'
+
+# Theme parameters
+[params]
+  description = 'Pelota - A 3D Tennis Game Built with Godot'
+  author = 'Pelota Team'
+  showVisitedLinks = true
+  disableLandingPageButton = true
+  disableSearch = false
+  disableSearchByDefault = false
+  menuHeight = 40
+
+[outputs]
+  home = ['HTML', 'JSON']
