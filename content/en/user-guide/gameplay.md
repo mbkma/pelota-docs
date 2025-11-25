@@ -5,4 +5,4 @@ weight: 10
 
 Gameplay mechanics and features.
 
-![Pelota Gameplay](/images/user-guide/pelota_gameplay01.png)
+![Pelota Gameplay](/pelota-docs/images/user-guide/pelota_gameplay01.png)
