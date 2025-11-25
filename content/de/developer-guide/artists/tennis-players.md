@@ -21,7 +21,7 @@ weight: 10
 4. Auf das Ergebnis klicken und **Install** wählen
 5. Die Erweiterung nach der Installation aktivieren
 
-![MPFB-Erweiterungsinstallation](/images/developers/artists/pelota_docs_blender_extension_mpfb.png)
+![MPFB-Erweiterungsinstallation](/pelota-docs/images/developers/artists/pelota_docs_blender_extension_mpfb.png)
 
 ### 2. Systemassets installieren
 
@@ -49,7 +49,7 @@ weight: 10
    - Hautfarbe und Details
 4. Änderungen in Echtzeit in der Vorschau anzeigen
 
-![MPFB-Seitenpanel](/images/developers/artists/pelota_docs_blender_mpfb_side_panel.png)
+![MPFB-Seitenpanel](/pelota-docs/images/developers/artists/pelota_docs_blender_mpfb_side_panel.png)
 
 ### 3. Kleidung hinzufügen
 

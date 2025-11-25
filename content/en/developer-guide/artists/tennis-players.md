@@ -21,7 +21,7 @@ weight: 10
 4. Click the result and select **Install**
 5. Enable the extension after installation
 
-![MPFB Extension Installation](/images/developers/artists/pelota_docs_blender_extension_mpfb.png)
+![MPFB Extension Installation](/pelota-docs/images/developers/artists/pelota_docs_blender_extension_mpfb.png)
 
 ### 2. Install System Assets
 
@@ -49,7 +49,7 @@ weight: 10
    - Skin tone and details
 4. Preview changes in real-time
 
-![MPFB Side Panel](/images/developers/artists/pelota_docs_blender_mpfb_side_panel.png)
+![MPFB Side Panel](/pelota-docs/images/developers/artists/pelota_docs_blender_mpfb_side_panel.png)
 
 ### 3. Add Clothing
 
