@@ -5,7 +5,7 @@ var relearn_searchindex = [
     "description": "Dies ist die offizielle Dokumentation für Pelota, ein 3D-Tennispiel, das mit Godot Engine entwickelt wurde.\nErste Schritte Erkunde die folgenden Abschnitte, um mehr über Pelota zu erfahren:\nErste Schritte - Installation und grundlegende Konfiguration Benutzerhandbuch - Wie man spielt und Spielfunktionen Entwicklerhandbuch - Technische Dokumentation für Entwickler API-Referenz - Vollständige API-Dokumentation Beiträge - Wie man zum Projekt beitragen kann Wähle ein Thema aus dem Menü aus, um zu beginnen.",
     "tags": [],
     "title": "Pelota Dokumentation",
-    "uri": "/de/index.html"
+    "uri": "/pelota-docs/de/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation \u003e Entwicklerhandbuch",
@@ -13,7 +13,7 @@ var relearn_searchindex = [
     "description": "Architekturübersicht und Designmuster.",
     "tags": [],
     "title": "Architektur",
-    "uri": "/de/developer-guide/architecture/index.html"
+    "uri": "/pelota-docs/de/developer-guide/architecture/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -21,7 +21,7 @@ var relearn_searchindex = [
     "description": "Erste Schritte mit Pelota.",
     "tags": [],
     "title": "Erste Schritte",
-    "uri": "/de/getting-started/index.html"
+    "uri": "/pelota-docs/de/getting-started/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation \u003e Erste Schritte",
@@ -29,7 +29,7 @@ var relearn_searchindex = [
     "description": "Installationsanweisungen für Pelota.",
     "tags": [],
     "title": "Installation",
-    "uri": "/de/getting-started/installation/index.html"
+    "uri": "/pelota-docs/de/getting-started/installation/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation \u003e Benutzerhandbuch",
@@ -37,7 +37,7 @@ var relearn_searchindex = [
     "description": "Spielmechaniken und Funktionen.",
     "tags": [],
     "title": "Spielweise",
-    "uri": "/de/user-guide/gameplay/index.html"
+    "uri": "/pelota-docs/de/user-guide/gameplay/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation \u003e Entwicklerhandbuch \u003e Künstler",
@@ -45,7 +45,7 @@ var relearn_searchindex = [
     "description": "Voraussetzungen Blender installieren Blender von blender.org herunterladen Die neueste stabile Version installieren (Version 4.0 oder neuer empfohlen) Blender starten und die Ersteinrichtung abschließen MPFB einrichten 1. MPFB-Erweiterung installieren Blender öffnen Zu Edit \u003e Preferences \u003e Extensions gehen Nach “MPFB” suchen Auf das Ergebnis klicken und Install wählen Die Erweiterung nach der Installation aktivieren",
     "tags": [],
     "title": "Tennisspieler gestalten",
-    "uri": "/de/developer-guide/artists/tennis-players/index.html"
+    "uri": "/pelota-docs/de/developer-guide/artists/tennis-players/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -53,7 +53,7 @@ var relearn_searchindex = [
     "description": "Benutzerhandbuch zum Spielen von Pelota.",
     "tags": [],
     "title": "Benutzerhandbuch",
-    "uri": "/de/user-guide/index.html"
+    "uri": "/pelota-docs/de/user-guide/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation \u003e Entwicklerhandbuch",
@@ -61,7 +61,7 @@ var relearn_searchindex = [
     "description": "Dokumentation zum Erstellen und Gestalten von Assets für Pelota.",
     "tags": [],
     "title": "Künstler",
-    "uri": "/de/developer-guide/artists/index.html"
+    "uri": "/pelota-docs/de/developer-guide/artists/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -69,7 +69,7 @@ var relearn_searchindex = [
     "description": "Technische Dokumentation für Entwickler.",
     "tags": [],
     "title": "Entwicklerhandbuch",
-    "uri": "/de/developer-guide/index.html"
+    "uri": "/pelota-docs/de/developer-guide/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -77,7 +77,7 @@ var relearn_searchindex = [
     "description": "Vollständige API-Dokumentation.",
     "tags": [],
     "title": "API-Referenz",
-    "uri": "/de/api-reference/index.html"
+    "uri": "/pelota-docs/de/api-reference/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -85,7 +85,7 @@ var relearn_searchindex = [
     "description": "Wie man zu Pelota beitragen kann.",
     "tags": [],
     "title": "Beiträge",
-    "uri": "/de/contributing/index.html"
+    "uri": "/pelota-docs/de/contributing/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -93,7 +93,7 @@ var relearn_searchindex = [
     "description": "",
     "tags": [],
     "title": "Kategorien",
-    "uri": "/de/categories/index.html"
+    "uri": "/pelota-docs/de/categories/index.html"
   },
   {
     "breadcrumb": "Pelota Dokumentation",
@@ -101,6 +101,6 @@ var relearn_searchindex = [
     "description": "",
     "tags": [],
     "title": "Stichworte",
-    "uri": "/de/tags/index.html"
+    "uri": "/pelota-docs/de/tags/index.html"
   }
 ]
