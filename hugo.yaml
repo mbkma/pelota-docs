@@ -1,6 +1,6 @@
 # Hugo configuration file
 title: Pelota
-baseURL = 'https://mbkma.github.io/pelota-docs'
+baseURL: https://mbkma.github.io/pelota-docs
 
 enableRobotsTXT: true
 defaultContentLanguage: 'en'
