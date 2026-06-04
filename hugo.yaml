@@ -1,0 +1,115 @@
+# Hugo configuration file
+title: Pelota
+baseURL = 'https://mbkma.github.io/pelota-docs'
+
+enableRobotsTXT: true
+defaultContentLanguage: 'en'
+defaultContentLanguageInSubdir: false
+
+# Parse Git commit
+#enableGitInfo: true
+
+# import hextra as module
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+# Summary length for blog previews (2-3 sentences)
+summaryLength: 50
+
+outputs:
+  home: ['html', 'rss']
+  page: ['html']
+  section: ['html', 'rss']
+
+markup:
+  # allow raw html
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block: [['\[', '\]'], ["$$", "$$"]]
+          inline: [['\(', '\)']]
+        enable: true
+
+
+  # enable hextra syntax highlight
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: Docs
+      pageRef: /docs
+      weight: 1
+    - name: Blog
+      pageRef: /blog
+      weight: 2
+    - name: About
+      pageRef: /about
+      weight: 3
+    - name: Contact ↗
+      url: "https://github.com/mbkma"
+      weight: 4
+    - name: Search
+      weight: 5
+      params:
+        type: search
+    - name: GitHub
+      weight: 6
+      url: "https://github.com/mbkma/pelota"
+      params:
+        icon: github
+
+
+params:
+  description: 'MATE Desktop Environment - A continuation of GNOME 2'
+  images:
+    - images/mate.png
+  # Display the last modification date
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+  # Display the author of the last modification
+  displayUpdatedAuthor: true
+
+  theme:
+    default: system
+    displayToggle: true
+
+  imageZoom:
+    enable: false
+
+  externalLinkDecoration: true
+
+  search:
+    enable: true
+    type: 'flexsearch'
+    flexsearch:
+      index: 'content'
+      tokenize: 'forward'
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: "images/mate.png"
+      width: 40
+      height: 40
+
+  page:
+    displayPagination: true
+
+  footer:
+    displayCopyright: true
+    displayPoweredBy: true
+
+  editURL:
+    enable: false
+
+  blog:
+    list:
+      displayTags: true
+      sortBy: 'date'
+      sortOrder: 'desc'
