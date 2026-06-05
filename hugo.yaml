@@ -7,7 +7,7 @@ defaultContentLanguage: 'en'
 defaultContentLanguageInSubdir: false
 
 # Parse Git commit
-#enableGitInfo: true
+enableGitInfo: true
 
 # import hextra as module
 module:
@@ -106,7 +106,8 @@ params:
     displayPoweredBy: true
 
   editURL:
-    enable: false
+    enable: true
+    base: "https://github.com/mbkma/pelota-docs/edit/main/content"
 
   blog:
     list:
