@@ -2,5 +2,4 @@
 title: Blog
 ---
 
-News and development updates for Pelota.
-
+News and development updates from Pelota.

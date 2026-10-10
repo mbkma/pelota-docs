@@ -1,0 +1,17 @@
+digraph animation_tree {
+  rankdir=LR; bgcolor="transparent"; pad=0.2; nodesep=0.3; ranksep=0.55; compound=true;
+  node [shape=box, style="rounded,filled", fillcolor="#1f9e8922", color="#1f9e89", fontname="DejaVu Sans", fontsize=14, fontcolor="#8a909a", penwidth=1.4, margin="0.15,0.08"];
+  edge [color="#8a909a", arrowsize=0.7];
+  subgraph cluster_loco {
+    label="Locomotion"; fontname="DejaVu Sans"; fontcolor="#8a909a"; color="#8a909a66"; style="rounded,dashed";
+    BS [label=<Blend space<br/><font point-size="11">walk, run, side steps,<br/>backward: 8 clips</font>>];
+    C [label=<Cadence<br/><font point-size="11">step rate by speed</font>>];
+    I [label=<Idle>];
+    MV [label=<Moving<br/><font point-size="11">crossfade by speed</font>>, shape=hexagon];
+    BS -> C -> MV; I -> MV;
+  }
+  SS [label=<Stroke clips<br/><font point-size="11">forehand, backhand<br/>(low, normal, high),<br/>slice, serve</font>>, fillcolor="#e4572e22", color="#e4572e"];
+  OS [label=<Stroke one-shot<br/><font point-size="11">plays a stroke on top</font>>, shape=hexagon, fillcolor="#e4572e22", color="#e4572e"];
+  OUT [label=<Skeleton>, fillcolor="#3b82f622", color="#3b82f6"];
+  MV -> OS; SS -> OS; OS -> OUT;
+}

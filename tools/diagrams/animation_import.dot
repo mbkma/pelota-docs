@@ -1,0 +1,15 @@
+digraph animation_import {
+  rankdir=TB; bgcolor="transparent"; pad=0.2; nodesep=0.45; ranksep=0.45;
+  node [shape=box, style="rounded,filled", fillcolor="#8b5cf622", color="#8b5cf6", fontname="DejaVu Sans", fontsize=14, fontcolor="#8a909a", penwidth=1.4, margin="0.15,0.08"];
+  edge [color="#8a909a", arrowsize=0.7];
+  A [label=<Recorded<br/>animation<br/><font point-size="11">other skeleton</font>>, fillcolor="#3b82f622", color="#3b82f6"];
+  B [label=<Retarget<br/><font point-size="11">bone map to the<br/>humanoid profile</font>>];
+  C [label=<Fix the<br/>rest pose<br/><font point-size="11">T-pose vs A-pose,<br/>hands, fingers</font>>];
+  D [label=<Remove<br/>root motion<br/><font point-size="11">the game moves<br/>the player</font>>];
+  E [label=<Hold the<br/>racket<br/><font point-size="11">grip and wrist</font>>];
+  F [label=<Cut one<br/>step cycle<br/><font point-size="11">1 s, left foot first</font>>];
+  G [label=<Game<br/>animation>, fillcolor="#1f9e8922", color="#1f9e89"];
+  { rank=same; A -> B -> C -> D; }
+  { rank=same; E -> F -> G; }
+  D -> E;
+}

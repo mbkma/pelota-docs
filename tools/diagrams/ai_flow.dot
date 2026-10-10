@@ -1,0 +1,22 @@
+digraph ai_flow {
+  rankdir=TB; bgcolor="transparent"; pad=0.2; nodesep=0.3; ranksep=0.32;
+  node [shape=box, style="rounded,filled", fillcolor="#3b82f622", color="#3b82f6", fontname="DejaVu Sans", fontsize=14, fontcolor="#8a909a", penwidth=1.4, margin="0.15,0.07"];
+  edge [color="#8a909a", fontname="DejaVu Sans", fontsize=11, fontcolor="#8a909a", arrowsize=0.7];
+  W [label=<Wait for your shot>];
+  L [label=<Your ball comes: <b>lock in</b>>];
+  V [label=<Volley in the net zone?>, shape=diamond, style="filled", fillcolor="#f2a54122", color="#f2a541", margin="0.05,0.03"];
+  VS [label=<Volley>];
+  G [label=<Groundstroke:<br/>choose how early>];
+  I [label=<Choose intent<br/><font point-size="11">safe, neutral, attack</font>>];
+  AIM [label=<Choose direction<br/><font point-size="11">open court, angle, lane</font>>];
+  RUN [label=<Run to the contact point>];
+  C [label=<0.35 s before contact: <b>commit</b><br/><font point-size="11">aim again from where you stand</font>>, fillcolor="#e4572e22", color="#e4572e"];
+  H [label=<Hit>];
+  N [label=<Good attack from a short<br/>ball, time to get in?>, shape=diamond, style="filled", fillcolor="#f2a54122", color="#f2a541", margin="0.02,0.02"];
+  NET [label=<Follow it to the net>, fillcolor="#1f9e8922", color="#1f9e89"];
+  REC [label=<Recover to cover<br/>your replies>, fillcolor="#1f9e8922", color="#1f9e89"];
+  W -> L -> V;
+  V -> VS [label="yes"]; V -> G [label="no"];
+  VS -> I; G -> I; I -> AIM -> RUN -> C -> H -> N;
+  N -> NET [label="yes"]; N -> REC [label="no"];
+}

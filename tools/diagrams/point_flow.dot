@@ -1,0 +1,19 @@
+digraph point_flow {
+  rankdir=LR; bgcolor="transparent"; pad=0.2; nodesep=0.45; ranksep=0.75;
+  node [shape=box, style="rounded,filled", fillcolor="#1f9e8922", color="#1f9e89", fontname="DejaVu Sans", fontsize=14, fontcolor="#8a909a", penwidth=1.4, margin="0.18,0.1"];
+  edge [color="#8a909a", fontname="DejaVu Sans", fontsize=11, fontcolor="#8a909a", arrowsize=0.7];
+  START [label="", shape=circle, width=0.18, style=filled, fillcolor="#8a909a", color="#8a909a"];
+  S1 [label=<First serve>, fillcolor="#3b82f622", color="#3b82f6"];
+  S2 [label=<Second serve>, fillcolor="#3b82f622", color="#3b82f6"];
+  R [label=<Rally>];
+  P [label=<Point over>, fillcolor="#e4572e22", color="#e4572e"];
+  START -> S1 [label="players placed"];
+  S1 -> S1 [label="let"];
+  S1 -> R [label="lands in the box"];
+  S1 -> S2 [label="misses"];
+  S2 -> R [label="lands in"];
+  S2 -> P [label="double fault"];
+  R -> R [label="in, returned"];
+  R -> P [label="out, net,\nsecond bounce"];
+  P -> START [label="next point", style=dashed];
+}

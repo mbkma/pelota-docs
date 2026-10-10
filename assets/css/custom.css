@@ -1,0 +1,15 @@
+/* Figures of the Pelota docs: centered images with a quiet caption */
+.pelota-figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+.pelota-figure img {
+  display: inline-block;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.pelota-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}

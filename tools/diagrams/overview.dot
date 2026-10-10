@@ -1,0 +1,21 @@
+digraph overview {
+  rankdir=LR; bgcolor="transparent"; pad=0.2; nodesep=0.35; ranksep=0.6;
+  node [shape=box, style="rounded,filled", fillcolor="#1f9e8922", color="#1f9e89", fontname="DejaVu Sans", fontsize=14, fontcolor="#8a909a", penwidth=1.4, margin="0.18,0.1"];
+  edge [color="#8a909a", fontname="DejaVu Sans", fontsize=11, fontcolor="#8a909a", arrowsize=0.7];
+  C1 [label=<Controller<br/><font point-size="11">your input, or the AI</font>>];
+  C2 [label=<Controller>];
+  P1 [label=<Player 1>, fillcolor="#3b82f622", color="#3b82f6"];
+  P2 [label=<Player 2>, fillcolor="#3b82f622", color="#3b82f6"];
+  M1 [label=<Model<br/><font point-size="11">animation, looks</font>>, fillcolor="#8b5cf622", color="#8b5cf6"];
+  M2 [label=<Model>, fillcolor="#8b5cf622", color="#8b5cf6"];
+  B [label=<Ball<br/><font point-size="11">flight, bounce, net</font>>, fillcolor="#f2a54122", color="#f2a541"];
+  MM [label=<Match manager<br/><font point-size="11">rules, score, serve</font>>, fillcolor="#e4572e22", color="#e4572e"];
+  S [label=<Stadium<br/><font point-size="11">cameras, clocks, crowd</font>>];
+  C1 -> P1 [label="move, shot"];
+  C2 -> P2;
+  P1 -> M1; P2 -> M2;
+  P1 -> B [label="hits"]; P2 -> B;
+  B -> MM [label="bounces, net"];
+  MM -> P1 [label="serve, point over", constraint=false];
+  MM -> S;
+}

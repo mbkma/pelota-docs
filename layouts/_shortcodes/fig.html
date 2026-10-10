@@ -1,0 +1,20 @@
+{{- /*
+  An image with a caption, resolved against the site's base URL.
+
+  @param {string} src Path of the image below static/ (e.g. "images/plots/court.svg").
+  @param {string} alt Alternative text (defaults to the caption).
+  @param {string} caption Caption shown below the image (Markdown).
+  @param {string} width Optional CSS max width (e.g. "480px").
+
+  @example {{< fig src="images/plots/court.svg" caption="The court" >}}
+*/ -}}
+{{- $src := .Get "src" | relURL -}}
+{{- $caption := .Get "caption" -}}
+{{- $alt := .Get "alt" | default ($caption | plainify) -}}
+{{- $width := .Get "width" -}}
+<figure class="pelota-figure">
+  <img src="{{ $src }}" alt="{{ $alt }}"{{ with $width }} style="max-width: {{ . }}"{{ end }}>
+  {{- with $caption }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>

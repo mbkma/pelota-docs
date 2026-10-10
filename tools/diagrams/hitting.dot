@@ -1,0 +1,19 @@
+digraph hitting {
+  rankdir=LR; bgcolor="transparent"; pad=0.2; nodesep=0.25; ranksep=0.7;
+  node [shape=box, style="rounded,filled", fillcolor="#1f9e8922", color="#1f9e89", fontname="DejaVu Sans", fontsize=14, fontcolor="#8a909a", penwidth=1.4, margin="0.18,0.08"];
+  edge [color="#8a909a", fontname="DejaVu Sans", fontsize=11, fontcolor="#8a909a", arrowsize=0.7];
+  A [label=<Rally speed<br/><font point-size="11">by stroke and skill</font>>];
+  B [label=<Attacking pace<br/><font point-size="11">only when everything fits</font>>, fillcolor="#e4572e22", color="#e4572e"];
+  S [label=<Shot>, shape=circle, fillcolor="#3b82f622", color="#3b82f6", fontsize=14];
+  T [label=<Timing<br/><font point-size="11">human player</font>>, fillcolor="#f2a54122", color="#f2a541"];
+  P [label=<Position<br/><font point-size="11">sweet spot</font>>, fillcolor="#f2a54122", color="#f2a541"];
+  R [label=<Readiness<br/><font point-size="11">set early, time</font>>, fillcolor="#f2a54122", color="#f2a541"];
+  D [label=<Deep ball>, fillcolor="#f2a54122", color="#f2a541"];
+  E [label=<Early or late>, fillcolor="#f2a54122", color="#f2a541"];
+  A -> S; B -> S;
+  T -> S [style=dashed, label="scales"];
+  P -> S [style=dashed, label="scales"];
+  E -> S [style=dashed, label="trades"];
+  R -> B [style=dashed, label="scales"];
+  D -> P [style=dashed, label="lowers"];
+}

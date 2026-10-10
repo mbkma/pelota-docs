@@ -1,0 +1,98 @@
+---
+title: Art and models
+weight: 2
+---
+
+Everything you see in Pelota can use your help: the players, their clothes and rackets, the
+court and the stadium. The source files (Blender files and textures) live in the
+[pelota-files](https://github.com/mbkma/pelota-files) repository; the exported models and
+textures go into the game.
+
+{{< callout type="info" >}}
+The game has a color palette for a consistent look: `assets/pelota_color_palette.gpl` (for GIMP,
+Krita or Inkscape), also as `.png` and `.svg`.
+{{< /callout >}}
+
+## How a player's look is built
+
+A player is one shared skeleton with **modular parts**: a body, a shirt, shorts, shoes, hair and a
+racket. Each player has an **appearance** that picks the meshes, textures and colors for these
+parts. Anything a player's appearance leaves empty is taken from the **base appearance**, so a
+new player only needs what makes them different, often just a few colors and textures.
+
+| Part | Mesh | Texture | Color |
+|---|---|---|---|
+| Body (skin and face) | ✓ | skin texture | skin tint |
+| Shirt, shorts, shoes | ✓ | ✓ | tint (multiplies the texture; a plain color without one) |
+| Hair | ✓ (hair cards) | strand shape (alpha) | hair color |
+| Racket | shared | frame texture, strings texture | — |
+
+The appearances are in `scenes/player/resources/appearances/`; open one in Godot's inspector to
+see all fields.
+
+## Creating a player model
+
+Players are made with **MPFB**, the MakeHuman add-on for Blender, which builds realistic people
+with a ready rig.
+
+{{% steps %}}
+
+### Install Blender and MPFB
+
+Install [Blender](https://www.blender.org/download/) (4.0 or newer). In Blender, open
+**Edit → Preferences → Extensions**, search for **MPFB**, install and enable it.
+
+### Install the MakeHuman assets
+
+Download the
+[system assets](https://files2.makehumancommunity.org/asset_packs/makehuman_system_assets/makehuman_system_assets_cc0.zip)
+(CC0). In the MPFB side panel, go to **Settings → Assets** and point it at the ZIP file (no need
+to unpack it).
+
+### Start from the base player
+
+Open
+[`player/base_player.blend`](https://github.com/mbkma/pelota-files/raw/refs/heads/main/player/base_player.blend)
+from pelota-files and select the human. It already has the game's rig and proportions.
+
+### Shape the person
+
+In MPFB's **Model** tab, adjust body (height, weight, muscle), face and skin. For a real
+player, work from photos of the front and the side.
+
+### Dress them
+
+In **Apply Assets**, choose clothes and hair. Keep the clothes as separate meshes. The game swaps
+shirts, shorts and shoes independently.
+
+### Share it
+
+Open a pull request on [pelota-files](https://github.com/mbkma/pelota-files) with your `.blend`
+file and a few renders, and describe the player. See the
+[MPFB documentation](https://static.makehumancommunity.org/mpfb.html) for more.
+
+{{% /steps %}}
+
+## Rackets
+
+All rackets share one model with two surfaces: the **frame** and the **strings**. A racket design
+is just two textures painted on its UV layout. Start from `head_racket.png` and
+`head_strings.png` in `assets/models/racket/textures/`. Each player's appearance names their two
+racket textures; the player's racket and the spare rackets on their bench both show them.
+
+## The stadium and props
+
+The stadium, court, umpire chair, benches and crowd models are Blender files in pelota-files.
+When you change one, export it into the game's `assets/models/` folder (keeping the file name)
+and check it in the match scene: the TV camera view and a walk around the court with the free
+camera (press <kbd>1</kbd> during a match to cycle cameras).
+
+Keep an eye on **performance**: the stadium is on screen all the time, and the crowd has
+thousands of people. Prefer fewer, larger textures, simple materials, and no hidden geometry.
+
+## Adding a new player to the roster
+
+Every player is a data file in `scenes/player/resources/data/` with their name, country, hand,
+height and rank, plus three linked resources: their **stats**, **play style** and **appearance**.
+Copy an existing player's files, change them, and the new player shows up in the menus
+automatically, sorted by rank.
