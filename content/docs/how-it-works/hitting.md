@@ -15,14 +15,16 @@ early** the ball is taken.
 
 | Stroke | Rally speed | Extra attacking pace |
 |---|---|---|
-| Forehand | 28–33 m/s (101–119 km/h) | 10–14 m/s |
-| Backhand | 26.5–31 m/s | 8–12 m/s |
-| Slice | 20–24 m/s | 4 m/s |
+| Forehand | 33–38 m/s (119–137 km/h) | 10–14 m/s |
+| Backhand | 31.5–36 m/s | 8–12 m/s |
+| Slice | 22–26 m/s | 4 m/s |
 | Drop shot | 9–13 m/s | none |
 | Volley | 14–18 m/s plus 55% of the incoming ball's speed | 6 m/s on a high ball |
 
 The ranges go from the weakest to the best player at that stroke. For example, a perfect
-forehand of the best player reaches about 47 m/s (170 km/h).
+forehand of the best player reaches about 52 m/s (187 km/h). The rally speeds come from
+Hawk-Eye tracking of the Australian Open: a pro's rally ball leaves the racket at about
+125–130 km/h, crosses the net about 0.55 m above the cord and peaks at about 1.7 m.
 
 ## Timing (human player)
 
@@ -80,6 +82,13 @@ the net to the baseline the pressure rises from nothing to full. A fully deep ba
 35–60% of the control (less for players with good shot control) and all of the attacking pace.
 For a serve, the same happens over the last 2.5 m before the service line.
 
+## Fast balls
+
+A fast ball is hard to control. A rally ball arrives at about 10–14 m/s; from 13 m/s on, the
+pace takes away control, at 20 m/s (a hard first serve) 35–70% of it (less for precise players,
+and on a return for good returners). So a big serve usually gets a weak return back: shorter,
+slower and more scattered.
+
 ## Early or late: the contact window
 
 After the bounce, the ball can be met anywhere in a **contact window**:
@@ -109,13 +118,13 @@ the ball at the point of the window closest to them. The AI chooses by its play 
 
 ## Serves
 
-A serve's speed depends on serve power (46–54 m/s, 166–194 km/h, for a flat first serve). A
+A serve's speed depends on serve power (47–58 m/s, 169–209 km/h, for a flat first serve). A
 slice serve has 87.5% and a kick serve 76% of that speed, traded for spin. Second serves are
 slower. For a human player, the serve's timing works like a shot's, with a perfect window of
 0.08 s: an untimed serve keeps 72% of its speed, a perfect one all of it.
 
 {{< callout type="info" >}}
-**In the code:** `scenes/player/player.gd` (contact: position, readiness, deep balls, earliness),
+**In the code:** `scenes/player/player.gd` (contact: position, readiness, deep and fast balls, earliness),
 `scenes/player/controllers/human_controller.gd` (timing, aiming, charging),
 `scenes/player/contact_window.gd` (the contact window),
 `scenes/player/controllers/controller.gd` (choosing the contact point),

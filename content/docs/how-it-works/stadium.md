@@ -53,7 +53,8 @@ green to purple as you look at it from the side.
 
 Each player's bench is a white chair and a navy box on a mat, next to the umpire chair; the
 spare rackets on it are in the same design as the racket the player plays with. The umpire sits
-high on a navy chair with Polo and Chubb panels, a small desk with a microphone and a sunshade.
+high on a navy chair with Polo and Chubb panels, a small desk with a microphone and a sunshade,
+and follows the ball with the head.
 
 {{< fig src="images/screenshots/bench-rackets.jpg" caption="Two benches, two players, two racket designs." >}}
 
@@ -105,13 +106,16 @@ from the field wall, so they follow the bowl as it widens.
 ## The crowd
 
 Every seat can hold a spectator: the crowd fills the stadium's seats, about nine in ten of them,
-with spectators of six different people in many clothes colors. Each section of seats is one
+with spectators of nine different people in many clothes colors. Each section of seats is one
 block, drawn with one draw call per person model, and far blocks automatically use simpler
-models. Everybody cheers after a point: louder for long rallies and big points.
+models. Most spectators follow the ball with their heads, turning them as far as a neck can;
+between points they look at the court. Everybody cheers after a point: louder for long rallies
+and big points.
 
 {{< callout type="info" >}}
 **In the code:** `scenes/environments/us_open/` (stadium, `arthur_ashe/arthur_ashe_builder.gd`
 builds the stadium, cameras: `cameras/tv_camera.gd`,
 `cameras/broadcast_camera.tscn`, `cameras/lens_glass.gdshader`), `scenes/player/model.gd` and
-`scenes/player/sweat_patches.gdshader` (sweat), `scenes/environments/crowd/` (crowd).
+`scenes/player/sweat_patches.gdshader` (sweat), `scenes/environments/crowd/` (crowd; heads
+turned in `crowd.gdshader`), `scenes/match/umpire/` (umpire and chair).
 {{< /callout >}}

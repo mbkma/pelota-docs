@@ -3,14 +3,20 @@ title: The AI opponent
 weight: 6
 ---
 
-**Short version:** when your ball comes, the AI predicts its flight and decides where to meet
-it. It decides how bold to be (safe, neutral or attacking) and in which direction to play,
+**Short version:** when your ball comes, the AI reacts after 0.28 s, predicts its flight and
+decides where to meet it. It decides how bold to be (safe, neutral or attacking) and in which direction to play,
 looking at where you stand. It looks at you once more just before it swings. After hitting, it
 recovers to the spot that best covers your possible replies, or, after a good attack from a
 short ball, follows it to the net. It plays by the same rules as you: the same physics, the same
 movement, the same shot model.
 
 {{< fig src="images/diagrams/ai_flow.svg" caption="What the AI does from your shot to its own." width="420px" >}}
+
+## Reacting
+
+Like a real player, the AI cannot move the instant you hit: it needs **0.28 s** to react to
+your shot (a pro returner's first step comes about 0.25–0.3 s after the serve). In a rally that
+is plenty of time; against a fast serve away from it, it may not get there: an **ace**.
 
 ## Where to meet the ball
 
@@ -24,10 +30,11 @@ For a groundstroke, the AI picks a point in the [contact window](../hitting/#ear
 
 | The AI plays **safe** when… | It **attacks** more often when… |
 |---|---|
-| it barely gets to the ball (needs more than 85% of the available time) | the ball is a **chance**: short (bounces nearer than 9 m from the net) and weak (slower than 27 m/s) |
-| your ball is very fast (over 126 km/h) | you are **out of position** |
-| it is exhausted (below 32% stamina) | its play style is aggressive (20% to 60% base chance) |
-| your ball is deep (likely, the deeper the more) | |
+| it barely gets to the ball (needs more than 120% of the available time, counted from a standstill) | the ball is a **chance**: short (bounces nearer than 7.5 m from the net) and weak (slower than 27 m/s) |
+| your ball is very fast (over 42 m/s, 151 km/h, about the fastest tenth of pro rally balls) | you are **out of position** |
+| it is exhausted (below 32% stamina) | its play style is aggressive (15% to 45% base chance) |
+| | **Never** on a ball met low near the net (below 0.5 m inside the service line, like a drop shot): it has to be lifted over the net |
+| your ball is deep (up to half the time, the deeper the more) | |
 
 On a full chance (a short, weak ball), it attacks about 90% of the time.
 
@@ -71,8 +78,10 @@ If it then has to play a groundstroke anyway (say, you lob it), it gives up the 
 
 After hitting, the AI recovers onto the **bisector** of the angle you can play into: from your
 hitting position, halfway between the two corners of its service line. How deep depends on its
-play style (from 1.5 m inside to 2.3 m behind its usual spot behind the baseline). After a weak
-shot of its own it stays 1.2 m deeper; after a good attack it steps 0.9 m in.
+play style (from 1.5 m inside to 2.3 m behind its usual spot, 1 m behind the baseline). After a
+weak shot of its own it stays 0.6 m deeper; after a good attack it steps 0.9 m in. It **jogs**
+back at 70% of its top speed instead of sprinting, so, like a pro in Hawk-Eye tracking, it is
+often still on its way when you hit. A ball into the space it is leaving is hard to get.
 
 {{< fig src="images/plots/recovery.svg" caption="The recovery spot lies on the bisector of the angle you can play into." width="420px" >}}
 
@@ -90,8 +99,34 @@ Each player has a **play style**:
 | *Preferred pattern* | A favorite tactic, which makes players recognizable |
 
 …and the same **stats** as any player (see [Stamina and player stats](../stamina-and-stats/)).
-Its shots miss their target by a random amount from about 0.15 m (the most precise) to 1.8 m (the
-least); its serves aim at the T, the body or wide.
+Its shots miss their target by a random, normally distributed amount: most land close to the
+target, a few far off. The spread is larger for a less precise player, for an attacking shot and
+for a hard ball (fast, deep, or one it barely gets to), and smaller for a safe shot. It is tuned
+to Hawk-Eye tracking of the Australian Open: about 15% of rally shots miss, more of them long
+than wide, a few into the net. Its serves aim at the T, the body or wide, a first serve close to
+the lines (the more precise the server, the closer; about a third are faults), a second serve
+with more margin (about 7% are faults).
+
+## Compared with real tennis
+
+The ball physics and the AI are tuned to Hawk-Eye tracking of the men's singles at the
+Australian Open. In AI-against-AI matches:
+
+| | Pelota | Hawk-Eye |
+|---|---|---|
+| Rally ball over the net cord | 0.46 m | 0.56 m |
+| Rally ball apex | 1.74 m | 1.68 m |
+| Contact height | 0.92 m | 0.95 m |
+| Lands inside the baseline | 4.2 m | 3.7 m |
+| Speed off the racket | 125 km/h | ~125–130 km/h |
+| Time from stroke to stroke | 1.28 s | 1.28 s |
+| Rally shots landing in | 85% | 85% |
+| First serve faults | 34% | 36% |
+| Second serve faults | 6.5% | ~7% |
+| Aces (share of points) | 6.5% | 7% |
+| Points won by the server | 56% | 62% |
+
+(Medians; the Pelota values come from about 325 points between AI players.)
 
 {{< callout type="info" >}}
 **In the code:** `scenes/player/controllers/ai_controller.gd` (phases, where to meet the ball,

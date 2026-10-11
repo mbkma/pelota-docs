@@ -83,8 +83,9 @@ racket textures; the player's racket and the spare rackets on their bench both s
 ## The stadium and props
 
 The crowd models are Blender files in pelota-files. When you change
-one, export it into the game's `assets/models/` folder (keeping the file name) and check it in
-the match scene: the TV camera view and a walk around the court with the free camera (press
+one, export it into the game's `assets/models/` folder (keeping the file name), bake the crowd
+again (`scenes/environments/crowd/baker/crowd_baker.gd`, see the top of the file; a new person
+also goes into `scenes/environments/crowd/spectators.tres`) and check it in the match scene: the TV camera view and a walk around the court with the free camera (press
 <kbd>1</kbd> during a match to cycle cameras).
 
 The stadium itself, Arthur Ashe Stadium, is built from code by

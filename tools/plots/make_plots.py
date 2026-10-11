@@ -70,12 +70,12 @@ def clamp01(t: float) -> float:
 
 GRAVITY = 9.81
 RADIUS = 0.033
-AIR_DRAG = 0.02
+AIR_DRAG = 0.022
 TOPSPIN_ACCEL_MAX = 15.0
-BACKSPIN_ACCEL_MAX = 5.0
+BACKSPIN_ACCEL_MAX = 12.0
 RESTITUTION_SOFT, RESTITUTION_HARD, HARD_IMPACT = 0.78, 0.6, 12.0
-HORIZONTAL_RETENTION = 0.88
-SPIN_BOUNCE_LIFT, SPIN_FORWARD_KICK, SPIN_KICK_FULL_SPEED = 0.2, 1.5, 20.0
+HORIZONTAL_RETENTION = 0.6
+SPIN_BOUNCE_LIFT, SPIN_FORWARD_KICK, SPIN_KICK_FULL_SPEED = 0.2, 0.8, 20.0
 SPIN_RETENTION = 0.6
 NET_HEIGHT = 0.914
 BASELINE = 11.885  # GameConstants.COURT_LENGTH_HALF
@@ -135,9 +135,9 @@ def plot_trajectories() -> None:
     fig, ax = plt.subplots(figsize=(10, 3.8))
     start, contact, target = 0.5, 1.0, 2 * BASELINE - 2.5
     shots = [
-        ("Flat drive · 32 m/s, little spin", 32.0, 0.1, BLUE),
-        ("Topspin · 28 m/s, heavy topspin", 28.0, 0.9, TEAL),
-        ("Slice · 21 m/s, backspin", 21.0, -0.8, AMBER),
+        ("Flat drive · 37 m/s, little spin", 37.0, 0.1, BLUE),
+        ("Topspin · 33 m/s, heavy topspin", 33.0, 0.9, TEAL),
+        ("Slice · 24 m/s, backspin", 24.0, -0.8, AMBER),
     ]
     for label, speed, spin, color in shots:
         up = aim(start, contact, speed, spin, target)
@@ -612,7 +612,7 @@ def plot_recovery() -> None:
     ux = [(c[0] - hitter[0], c[1] - hitter[1]) for c in (left, right)]
     norm = [math.hypot(*u) for u in ux]
     bis = ((ux[0][0] / norm[0] + ux[1][0] / norm[1]), (ux[0][1] / norm[0] + ux[1][1] / norm[1]))
-    depth = 13.7
+    depth = BASELINE + 1.0
     t = (depth - hitter[1]) / bis[1]
     spot = (hitter[0] + t * bis[0], depth)
     ax.plot([hitter[0], spot[0]], [hitter[1], spot[1]], color=TEAL, lw=2)

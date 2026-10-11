@@ -20,8 +20,9 @@ how to aim a shot), the ball's velocity changes by:
 - **Gravity**: 9.81 m/s² downward.
 - **Spin**, which acts more on a fast ball than on a slow one:
   - **topspin** pushes the ball *down*, up to 15 m/s² at full spin, so it dips into the court;
-  - **backspin** pushes it *up*, but at most 5 m/s², because a slice spins slower than a topspin
-    drive;
+  - **backspin** pushes it *up*, up to 12 m/s². This lift carries a slow slice: hit above the
+    net it flies almost straight, hit below the net it is lifted over the cord, and it floats down
+    as it slows;
   - **sidespin** curves the ball sideways, up to 8 m/s².
 - **Air drag**, which slows the ball the more the faster it is.
 
@@ -33,7 +34,7 @@ a_y = -g - s_y \, a_{\text{spin}} \, f
 v \leftarrow \frac{v}{1 + c_d \, |v| \, \Delta t}
 $$
 
-where \(a_{\text{spin}}\) is 15 m/s² for topspin and 5 m/s² for backspin, and \(c_d = 0.02\).
+where \(a_{\text{spin}}\) is 15 m/s² for topspin and 12 m/s² for backspin, and \(c_d = 0.022\).
 
 ## The bounce
 
@@ -41,7 +42,9 @@ When the ball reaches the ground:
 
 - It keeps **60–78%** of its downward speed, going back up. A gentle impact keeps more than a
   hard one, like a real ball.
-- It keeps **88%** of its forward speed (friction with the court).
+- It keeps **60%** of its forward speed (friction: a hard court grips the ball). With this the
+  ball takes about as long from stroke to stroke as in Hawk-Eye tracking of the Australian Open
+  (about 1.3 s), and comes up to about 1 m after the bounce.
 - **Topspin** kicks it forward and a little higher; **backspin** holds it back and keeps it low;
   **sidespin** kicks it sideways.
 - The ball keeps 60% of its spin.
