@@ -34,6 +34,12 @@ The first start takes a while because Godot imports all models and textures.
   can be played by the computer, the keyboard or a gamepad. So you can watch two computer
   players, play against the computer, or play against a friend.
 
+**US Open**
+: Play the men's singles of the US Open as one of the 128 best ranked ATP players: seven
+  rounds from the first round to the final, against the players the draw brings. The other
+  matches are simulated, so the favorites usually go far, but upsets happen. See
+  [US Open](tournament/).
+
 **Training**
 : You alone on court with a ball machine on the far baseline. Move around freely and ask for a
   ball whenever you are ready (<kbd>E</kbd> or the right trigger). After each of your shots the
@@ -46,7 +52,8 @@ The first start takes a while because Godot imports all models and textures.
 
 Pelota plays real tennis rules: points go 15, 30, 40 and game; at 40–40 (deuce) you need two
 points in a row. Six games win a set, but you need two games more than your opponent; at 6–6 a
-tiebreak to 7 points decides. A match is best of three sets.
+tiebreak to 7 points decides. A match is best of three sets (in the US Open you can choose
+best of five, as the men play it).
 
 A serve must land in the service box diagonally across; if it misses you get a second serve,
 and if that misses too it is a double fault and the point goes to your opponent.
@@ -54,4 +61,5 @@ and if that misses too it is a double fault and the point goes to your opponent.
 {{< cards >}}
   {{< card link="controls" title="Controls" icon="cursor-click" >}}
   {{< card link="hitting-well" title="Hitting well" icon="sparkles" >}}
+  {{< card link="tournament" title="US Open" icon="trophy" >}}
 {{< /cards >}}

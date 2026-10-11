@@ -99,3 +99,20 @@ Tennis feel is easy to break. Some habits that help:
   screenshots before and after, and add them to the pull request.
 - **Update the docs.** If your change alters how something works, update the matching page here.
   It is part of the change.
+
+## Updating the players
+
+The players are made from the ATP ranking in
+`scenes/player/resources/roster/atp_top_128.csv`: rank, name, country, age, height, hand,
+backhand and playing style (`big_server`, `aggressive`, `baseliner`, `counterpuncher` or
+`all_court`). When the ranking changes, update the file and run the builder:
+
+```bash
+godot --headless --path . -s res://scenes/player/resources/roster/roster_builder.gd
+```
+
+It writes one player resource per row into `scenes/player/resources/data/`. A player whose
+resource is made by hand (stats, play style and look tuned by hand, like Sinner or Alcaraz)
+keeps it: the builder only updates the facts and moves the stats to the level of the rank. Every
+other player is generated from the rank and the playing style. A hand-made player who drops out
+of the ranking stays playable without a rank.
