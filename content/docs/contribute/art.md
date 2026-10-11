@@ -82,10 +82,20 @@ racket textures; the player's racket and the spare rackets on their bench both s
 
 ## The stadium and props
 
-The stadium, court, umpire chair, benches and crowd models are Blender files in pelota-files.
-When you change one, export it into the game's `assets/models/` folder (keeping the file name)
-and check it in the match scene: the TV camera view and a walk around the court with the free
-camera (press <kbd>1</kbd> during a match to cycle cameras).
+The crowd models are Blender files in pelota-files. When you change
+one, export it into the game's `assets/models/` folder (keeping the file name) and check it in
+the match scene: the TV camera view and a walk around the court with the free camera (press
+<kbd>1</kbd> during a match to cycle cameras).
+
+The stadium itself, Arthur Ashe Stadium, is built from code by
+`scenes/environments/us_open/arthur_ashe/arthur_ashe_builder.gd`: its sizes, colors and shapes
+are constants and functions there. Change them and run the builder again (see the top of the
+file) to regenerate the stadium, its seats and the crowd's seating. The sponsors' logos are one
+texture atlas, `scenes/environments/us_open/sponsor_logos.png`, listed in `us_open_logos.gd`
+next to it. The court with its net (`scenes/court/court_model_builder.gd`), the umpire chair
+(`scenes/match/umpire/umpire_chair_builder.gd`) and the TV cameras
+(`scenes/environments/us_open/cameras/broadcast_camera_builder.gd`) are built from code the
+same way.
 
 Keep an eye on **performance**: the stadium is on screen all the time, and the crowd has
 thousands of people. Prefer fewer, larger textures, simple materials, and no hidden geometry.

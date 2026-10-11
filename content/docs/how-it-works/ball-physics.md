@@ -51,7 +51,7 @@ and slows down.
 
 ## The net
 
-The net cord hangs from 1.065 m at the posts to 0.914 m in the middle. When the ball crosses
+The net cord hangs from 1.07 m at the posts of the singles net, inside the doubles alleys, to 0.914 m in the middle. When the ball crosses
 the net:
 
 - **Above the cord**: nothing happens.

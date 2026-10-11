@@ -25,15 +25,10 @@ is from 0.
 
 | Line | Distance |
 |---|---|
-| Net height | 0.914 m in the middle, 1.065 m at the posts |
+| Net height | 0.914 m in the middle, 1.07 m at the posts (a singles net: posts 5.03 m from the middle, no singles sticks) |
 | Service line | 6.40 m from the net |
-| Baseline | 13.0 m from the net |
+| Baseline | 11.885 m from the net |
 | Singles sideline | 4.115 m from the middle |
-
-{{< callout type="warning" >}}
-A real court's baseline is 11.89 m from the net; the game currently uses 13.0 m. Many tuning
-values (where players stand, how deep shots go) are built around the game's value.
-{{< /callout >}}
 
 ## Facing and "left/right"
 
