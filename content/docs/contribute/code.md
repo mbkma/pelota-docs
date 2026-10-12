@@ -117,3 +117,19 @@ resource is made by hand (stats, play style and look tuned by hand, like Sinner 
 keeps it: the builder only updates the facts and moves the stats to the level of the rank. Every
 other player is generated from the rank and the playing style. A hand-made player who drops out
 of the ranking stays playable without a rank.
+
+## Making a release
+
+`tools/release.sh` builds a release for Linux and Windows: it exports the game with the
+**Linux** and **Windows Desktop** export presets, packs each with the README
+(`tools/release_readme.txt`) and the license into an archive, and writes their checksums, all
+into `build/<version>/`.
+
+```bash
+GODOT=/path/to/godot tools/release.sh 0.2.0-alpha
+```
+
+The version defaults to the one in `project.godot`. Godot's export templates must be installed
+(**Editor → Manage Export Templates**). With `--publish` the script also tags the commit
+`v<version>`, pushes the tag and creates a **draft** GitHub release with the archives (needs the
+[GitHub CLI](https://cli.github.com/), logged in); check the draft and publish it on GitHub.

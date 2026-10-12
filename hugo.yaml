@@ -68,7 +68,7 @@ params:
   dateFormat: January 2, 2006
 
   theme:
-    default: system
+    default: dark
     displayToggle: true
 
   imageZoom:
