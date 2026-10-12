@@ -520,16 +520,6 @@ def plot_match_story() -> None:
     save(fig, "match_story")
 
 
-def plot_sweat() -> None:
-    fig, ax = plt.subplots(figsize=(6.5, 3.0))
-    minutes = list(range(0, 151))
-    ax.plot(minutes, [lerp(0.1, 1.0, clamp01(m / 90)) for m in minutes], color=BLUE, lw=2.4)
-    ax.set_xlabel("match time (min)")
-    ax.set_ylabel("sweat")
-    ax.set_ylim(0, 1.08)
-    save(fig, "sweat")
-
-
 # --- Court and tactics --------------------------------------------------------------------------
 
 def draw_court(ax: plt.Axes, half: bool = False) -> None:
@@ -640,7 +630,6 @@ if __name__ == "__main__":
     plot_swing_timing()
     plot_pressure_sources()
     plot_match_story()
-    plot_sweat()
     plot_court()
     plot_open_court()
     plot_recovery()

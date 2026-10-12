@@ -42,8 +42,7 @@ set point or a match point, for either side. This feeds the players'
 
 The stadium shows a match time that runs like a real match: every point adds 25 seconds (walking
 back, toweling, preparing the serve) plus 1.5 seconds per shot of the rally, counted at the end
-of each game (at most 10 minutes per game). This clock also makes the players
-[sweat](../stadium/#players-who-sweat).
+of each game (at most 10 minutes per game).
 
 ## Statistics
 

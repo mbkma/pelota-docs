@@ -37,5 +37,5 @@ A match is a handful of parts that talk to each other:
   {{< card link="mental-game" title="Pressure and confidence" icon="heart" subtitle="Nerves on big points, momentum from winning games." >}}
   {{< card link="stamina-and-stats" title="Stamina and player stats" icon="lightning-bolt" subtitle="What makes players different, and how they tire." >}}
   {{< card link="match-flow" title="Match flow" icon="clock" subtitle="Points, faults, breaks between points, and the match clock." >}}
-  {{< card link="stadium" title="Stadium and broadcast" icon="video-camera" subtitle="TV cameras, benches and players who sweat." >}}
+  {{< card link="stadium" title="Stadium and broadcast" icon="video-camera" subtitle="TV cameras, benches, crowd and umpire." >}}
 {{< /cards >}}

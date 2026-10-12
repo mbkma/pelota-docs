@@ -22,6 +22,8 @@ matches already played. Your name is in your color, winners are highlighted.
 
 - **Play the round** starts your next match. When it is over, **Back to the Draw** returns to
   the draw, and the other matches of the round are decided.
+- **Simulate My Match** decides your next match without playing it, the same way as the other
+  matches, over the sets you chose.
 - Choose how long your matches are: **best of 3** or **best of 5** sets. The other matches are
   always best of five, as the men play it at Grand Slams.
 - Once you are out, **Simulate to the Final** plays the rest of the tournament and shows the

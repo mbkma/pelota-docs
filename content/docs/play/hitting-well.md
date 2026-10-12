@@ -7,6 +7,12 @@ A shot in Pelota is good when three things come together: **where you stand**, *
 release the button** and **how much time the ball gives you**. This page is the player's guide;
 [Hitting the ball](../../how-it-works/hitting/) explains the same things from the inside.
 
+{{< callout type="info" >}}
+By default the screen shows the **stroke indicator** (a circle above your player's head), the
+landing ring of your aimed shot and the score panel. The ring at your feet, the shot ratings and
+the players' stamina, pressure and confidence are turned on in **Options → Interface**.
+{{< /callout >}}
+
 ## 1. Stand in the right place
 
 When your opponent hits, a marker appears at your feet: a **ring** at the standard spot to meet
@@ -46,8 +52,12 @@ perfect shot gets:
 - **much more spin**: 130% instead of about 105%;
 - **far more precision**: the landing area shrinks from about 0.9 m to 0.25 m.
 
-While you hold the button, the landing ring on the far side shrinks as your timing gets better
-and **lights up** when a release would be perfect. Watch it!
+The **stroke indicator** above your head shows your timing. It appears as soon as the shot
+button can be used (the opponent's ball comes in, or the serve is tossed) and goes from **red**
+(releasing now would be too early) through **amber** to **green** when a release would be
+perfect. Once you release it keeps the timing you got, and it disappears when the racket meets
+the ball, or when the point is over. With the aim marker turned on, the landing ring on the far
+side also shrinks as your timing gets better and **lights up** when a release would be perfect.
 
 ## 3. Use the time the ball gives you
 

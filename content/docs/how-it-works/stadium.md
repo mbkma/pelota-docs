@@ -4,8 +4,8 @@ weight: 10
 ---
 
 **Short version:** the match is filmed like a TV broadcast. The main camera behaves like the one
-at a real tournament, the stadium shows a serve clock, serve speeds and the match time, the crowd
-cheers exciting points, and the players get visibly sweaty as the match goes on.
+at a real tournament, the stadium shows a serve clock, serve speeds and the match time, and the
+crowd cheers exciting points.
 
 ## The TV camera
 
@@ -51,29 +51,13 @@ green to purple as you look at it from the side.
 
 ## Benches and the umpire chair
 
-Each player's bench is a white chair and a navy box on a mat, next to the umpire chair; the
-spare rackets on it are in the same design as the racket the player plays with. The umpire sits
+Each player's bench is a white chair and a navy box on a mat, next to the umpire chair, with
+towels, evian bottles and a racket bag; the spare rackets on it are the racket the player plays
+with, and the bag is of its brand. The umpire sits
 high on a navy chair with Polo and Chubb panels, a small desk with a microphone and a sunshade,
 and follows the ball with the head.
 
 {{< fig src="images/screenshots/bench-rackets.jpg" caption="Two benches, two players, two racket designs." >}}
-
-## Players who sweat
-
-The longer the match, the more the players sweat, following the [match clock](../match-flow/#the-match-clock):
-from a warmed-up 10% at the start to fully soaked after 90 minutes of match time.
-
-{{< fig src="images/plots/sweat.svg" caption="Sweat by match time." width="520px" >}}
-
-- **Skin** gets shinier: a thin wet film (clearcoat) and a smoother surface.
-- **The shirt** soaks through in patches: down the spine, on the chest, under the arms and in a
-  band around the collar. The patches grow with the sweat and have uneven edges, and they stay
-  on the cloth however the player moves.
-- **Drops**, faint and see-through, now and then fly off the head in a short burst, but only
-  when the player is tired (stamina below 35%) and running; more often the more tired, the
-  sweatier and the faster.
-
-{{< fig src="images/screenshots/sweat-dry-and-soaked.jpg" caption="Dry (start of the match) and soaked (after 90 minutes), front and back." >}}
 
 ## Arthur Ashe Stadium
 
@@ -115,7 +99,6 @@ and big points.
 {{< callout type="info" >}}
 **In the code:** `scenes/environments/us_open/` (stadium, `arthur_ashe/arthur_ashe_builder.gd`
 builds the stadium, cameras: `cameras/tv_camera.gd`,
-`cameras/broadcast_camera.tscn`, `cameras/lens_glass.gdshader`), `scenes/player/model.gd` and
-`scenes/player/sweat_patches.gdshader` (sweat), `scenes/environments/crowd/` (crowd; heads
-turned in `crowd.gdshader`), `scenes/match/umpire/` (umpire and chair).
+`cameras/broadcast_camera.tscn`, `cameras/lens_glass.gdshader`), `scenes/environments/crowd/`
+(crowd; heads turned in `crowd.gdshader`), `scenes/match/umpire/` (umpire and chair).
 {{< /callout >}}

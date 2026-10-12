@@ -98,8 +98,38 @@ next to it. The court with its net (`scenes/court/court_model_builder.gd`), the 
 (`scenes/environments/us_open/cameras/broadcast_camera_builder.gd`) are built from code the
 same way.
 
+The **props at court level** are scenes placed by hand in
+`scenes/environments/us_open/stadium.tscn`, under `Courtside`: the benches (mat, box, chair),
+towels, water bottles, tennis bags (pick the brand in the inspector) and the spare rackets, and
+the cameras on the TV camera platforms (`PlatformCameras`). Select them in the editor to move,
+turn, copy or delete them; rebuilding the stadium does not touch them. Their meshes come from
+`scenes/environments/us_open/props/courtside_props_builder.gd` (see the top of the file). The
+photographers' and the TV camera operators' places are **prop rows**: one node whose children
+(markers) are the places, drawn as a single instanced mesh however many there are, and the crowd
+seats a person at each. Move, copy or delete a marker and the photographer follows.
+
+**Racket designs** in the look of current pro racquets (from Babolat, HEAD, Wilson, Yonex,
+Tecnifibre, Dunlop and Diadem) are resources in `scenes/player/racket/designs/`: the brand, the
+model and a frame and a strings texture (in `assets/models/racket/textures/designs/`). Every
+player plays one (see [Updating the players](../code/#updating-the-players)); the player's bench
+shows it, with a bag of its brand. The textures are painted by
+`pelota-files/racket/make_racket_designs.py` onto the racket model's texture layout: change a
+design's colors there, or add one, and run it again.
+
 Keep an eye on **performance**: the stadium is on screen all the time, and the crowd has
 thousands of people. Prefer fewer, larger textures, simple materials, and no hidden geometry.
+
+## The umpire's voice
+
+The umpire's calls are spoken by [Kokoro](https://github.com/hexgrad/kokoro), a text to speech
+model: the scores, deuce, advantage, game, set and match, the tiebreak scores, let, and the
+electronic "Fault" and "Out", plus every player's last name as its own clip. They are made by
+`pelota-files/sounds/umpire/make_umpire_calls.py` (see the top of the file for how to run it),
+which writes the clips into `assets/sounds/effects/umpire/` and the calls resource
+`scenes/match/umpire/umpire_calls.tres`; after adding players, run it and then the roster builder,
+which gives each player their name clip. A name said wrong can be respelled there. The voice
+sounds like the stadium's speakers through the effects on the **Umpire** audio bus: a
+loudspeaker's frequency range and a quiet, open-air reverb.
 
 ## Adding a new player to the roster
 

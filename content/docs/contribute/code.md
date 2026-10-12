@@ -47,7 +47,7 @@ Run both before you open a pull request. The rules are in `gdlintrc`.
       {{< filetree/folder name="ball" >}}{{< filetree/file name="ball.gd — flight, bounce, net, prediction, aiming" >}}{{< /filetree/folder >}}
       {{< filetree/folder name="player" >}}
         {{< filetree/file name="player.gd — movement, strokes, contact, stamina" >}}
-        {{< filetree/file name="model.gd — looks, sweat, stroke contact points" >}}
+        {{< filetree/file name="model.gd — looks, stroke contact points" >}}
         {{< filetree/file name="player_animator.gd — animation blending, strokes" >}}
         {{< filetree/folder name="controllers — human and AI" state="closed" >}}{{< /filetree/folder >}}
         {{< filetree/folder name="ai — shot planning" state="closed" >}}{{< /filetree/folder >}}
@@ -104,8 +104,9 @@ Tennis feel is easy to break. Some habits that help:
 
 The players are made from the ATP ranking in
 `scenes/player/resources/roster/atp_top_128.csv`: rank, name, country, age, height, hand,
-backhand and playing style (`big_server`, `aggressive`, `baseliner`, `counterpuncher` or
-`all_court`). When the ranking changes, update the file and run the builder:
+backhand, playing style (`big_server`, `aggressive`, `baseliner`, `counterpuncher` or
+`all_court`) and racket (a design in `scenes/player/racket/designs/`; `racket_source` says
+where it is known from, or `estimated` where it is a guess to correct). When the ranking changes, update the file and run the builder:
 
 ```bash
 godot --headless --path . -s res://scenes/player/resources/roster/roster_builder.gd
