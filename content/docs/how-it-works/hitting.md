@@ -49,7 +49,8 @@ skill for a return of serve and the net game for a volley. Pressure reduces shot
 [Pressure and confidence](../mental-game/)).
 
 Still holding the button when the racket meets the ball means the player just blocks the ball
-back: a weak shot through the middle that lands about 6 m behind the net at 70–90 km/h.
+back: a weak shot the aimed way at 70–90 km/h, a quarter less wide and shorter, landing 5–8 m
+behind the net (never deeper than the aim).
 
 The **AI** has no button to time. Its precision comes from its stats and play style instead.
 
@@ -58,11 +59,17 @@ The **AI** has no button to time. Its precision comes from its stats and play st
 Every stroke animation has a **contact point**: where the racket meets the ball in that swing.
 The closer the real ball passes to it, the cleaner the hit.
 
-{{< fig src="images/plots/positioning.svg" caption="Within 15 cm of the contact point the hit is perfect; beyond 1 m the ball is missed." width="560px" >}}
+Around contact the racket hand reaches out of the swing toward the ball, by up to 45 cm. The ball
+is only hit if it then passes the strings: within 15 cm of the racket's sweet spot (plus the
+ball's radius). So a ball more than about 63 cm from the swing's contact point is out of reach and
+missed.
+
+{{< fig src="images/plots/positioning.svg" caption="Within 15 cm of the contact point the hit is perfect; beyond the racket's reach (about 63 cm) the ball is missed." width="560px" >}}
 
 A ball met off the sweet spot loses **control**. Less control means less of the attacking pace,
-a shorter and flatter ball (down to 55% of the planned depth and 35% of the spin), and a bigger
-random miss (up to 3 m).
+a shorter, narrower and flatter ball (down to 55% of the planned depth, 75% of the planned
+width and 35% of the spin), and a small random miss (up to 1.2 m): a stretched ball is weak, but
+it still goes about the aimed way.
 
 ## Readiness
 

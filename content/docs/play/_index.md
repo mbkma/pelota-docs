@@ -11,9 +11,11 @@ computer. This section gets you started.
 
 {{< tabs >}}
 {{< tab name="Download a build" >}}
-When a build is published, it is on the
-[releases page](https://github.com/mbkma/pelota/releases) of the GitHub project. Download the
-file for your system, unpack it and start `pelota`.
+Download the file for your system from the
+[latest release](https://github.com/mbkma/pelota/releases/latest) (the `.zip` for Windows, the
+`.tar.gz` for Linux; older versions are on the
+[releases page](https://github.com/mbkma/pelota/releases)), unpack it and start `Pelota.exe`
+(Windows) or `Pelota.x86_64` (Linux).
 {{< /tab >}}
 {{< tab name="Run from the source" >}}
 Pelota is made with the [Godot engine](https://godotengine.org/), version **4.8**.
@@ -32,7 +34,9 @@ The first start takes a while because Godot imports all models and textures.
 **Match**
 : Pick your player and your opponent, then play a full match on the stadium court. Each side
   can be played by the computer, the keyboard or a gamepad. So you can watch two computer
-  players, play against the computer, or play against a friend.
+  players, play against the computer, or play against a friend. The match is saved after
+  every point: quit any time and pick it up again with **Continue Match** in the main menu,
+  from the point you were playing. Starting a new match replaces the saved one.
 
 **US Open**
 : Play the men's singles of the US Open as one of the 128 best ranked ATP players: seven

@@ -123,7 +123,8 @@ of the ranking stays playable without a rank.
 `tools/release.sh` builds a release for Linux and Windows: it exports the game with the
 **Linux** and **Windows Desktop** export presets, packs each with the README
 (`tools/release_readme.txt`) and the license into an archive, and writes their checksums, all
-into `build/<version>/`.
+into `build/<version>/`. The README, the website and these docs link to the latest release
+(`https://github.com/mbkma/pelota/releases/latest`), so they need no change for a release.
 
 ```bash
 GODOT=/path/to/godot tools/release.sh 0.2.0-alpha
@@ -133,3 +134,6 @@ The version defaults to the one in `project.godot`. Godot's export templates mus
 (**Editor → Manage Export Templates**). With `--publish` the script also tags the commit
 `v<version>`, pushes the tag and creates a **draft** GitHub release with the archives (needs the
 [GitHub CLI](https://cli.github.com/), logged in); check the draft and publish it on GitHub.
+The release notes are the version's section of `CHANGELOG.md` (`## Pelota <version>`): write it
+before publishing, the script stops without it. Do not mark the release as a pre-release:
+`releases/latest` only leads to full releases.

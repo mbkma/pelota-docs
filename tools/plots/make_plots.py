@@ -263,16 +263,17 @@ def plot_timing() -> None:
 
 def plot_positioning() -> None:
     fig, ax = plt.subplots(figsize=(6.5, 3.2))
-    perfect, tolerance = 0.15, 1.0  # Player.PERFECT_CONTACT_DISTANCE, hit_range_tolerance
-    xs = [i / 100 for i in range(0, 121)]
-    ys = [1.0 - clamp01((x - perfect) / (tolerance - perfect)) if x <= tolerance else 0
-          for x in xs]
+    perfect = 0.15  # Player.PERFECT_CONTACT_DISTANCE
+    # Farthest hit: Model.MAX_REACH + Player.RACKET_HEAD_RADIUS + Ball.RADIUS
+    reach = 0.45 + 0.15 + 0.033
+    xs = [i / 100 for i in range(0, 81)]
+    ys = [1.0 - clamp01((x - perfect) / (reach - perfect)) if x <= reach else 0 for x in xs]
     ax.plot(xs, ys, color=TEAL, lw=2.2)
     ax.axvspan(0, perfect, color=TEAL, alpha=0.12)
     ax.text(perfect / 2, 0.15, "sweet\nspot", ha="center", fontsize=12, color=TEAL)
-    ax.axvspan(tolerance, 1.2, color=CORAL, alpha=0.08)
-    ax.text(1.1, 0.5, "missed", ha="center", color=CORAL, fontsize=12)
-    ax.set_xlabel("distance of the ball from the racket's contact point (m)")
+    ax.axvspan(reach, 0.8, color=CORAL, alpha=0.08)
+    ax.text((reach + 0.8) / 2, 0.5, "out of\nreach", ha="center", color=CORAL, fontsize=12)
+    ax.set_xlabel("distance of the ball from the swing's contact point (m)")
     ax.set_ylabel("positioning quality")
     save(fig, "positioning")
 

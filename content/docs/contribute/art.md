@@ -15,20 +15,24 @@ Krita or Inkscape), also as `.png` and `.svg`.
 
 ## How a player's look is built
 
-A player is one shared skeleton with **modular parts**: a body, a shirt, shorts, shoes, hair and a
-racket. Each player has an **appearance** that picks the meshes, textures and colors for these
-parts. Anything a player's appearance leaves empty is taken from the **base appearance**, so a
-new player only needs what makes them different, often just a few colors and textures.
+A player has a **body**: a rigged model exported from Blender with its meshes (body, shirt,
+shorts, shoes, hair, ...). Players without a body of their own use the default body. Every body
+has the same skeleton layout, so all animations play on every body (see
+[Animation](../../how-it-works/animation/)).
 
-| Part | Mesh | Texture | Color |
-|---|---|---|---|
-| Body (skin and face) | ✓ | skin texture | skin tint |
-| Shirt, shorts, shoes | ✓ | ✓ | tint (multiplies the texture; a plain color without one) |
-| Hair | ✓ (hair cards) | strand shape (alpha) | hair color |
-| Racket | shared | frame texture, strings texture | — |
+On top of the body, each player has an **appearance** with the textures and colors of its parts.
+Anything a player's appearance leaves empty is taken from the **base appearance**, so a new
+player often only needs a few colors and textures.
+
+| Part | Texture | Color |
+|---|---|---|
+| Body (skin and face) | skin texture | skin tint |
+| Shirt, shorts, shoes | ✓ | tint (multiplies the texture; a plain color without one) |
+| Hair | strand shape (alpha) | hair color |
+| Racket | frame texture, strings texture | — |
 
 The appearances are in `scenes/player/resources/appearances/`; open one in Godot's inspector to
-see all fields.
+see all fields. A player's body is set in their player data (`scenes/player/resources/data/`).
 
 ## Creating a player model
 
@@ -62,14 +66,58 @@ player, work from photos of the front and the side.
 
 ### Dress them
 
-In **Apply Assets**, choose clothes and hair. Keep the clothes as separate meshes. The game swaps
-shirts, shorts and shoes independently.
+In **Apply Assets**, choose clothes and hair. Keep the clothes as separate meshes: the game
+colors and textures shirt, shorts and shoes independently.
+
+### Bake the animations
+
+The game rig (`game-rig`) copies the MPFB control rig with bone constraints. Bake the actions you
+want in the game onto it, one NLA track per animation named `g_<animation>` (for example
+`g_forehand`). The export mutes the constraints, so only the baked tracks count.
 
 ### Share it
 
 Open a pull request on [pelota-files](https://github.com/mbkma/pelota-files) with your `.blend`
 file and a few renders, and describe the player. See the
 [MPFB documentation](https://static.makehumancommunity.org/mpfb.html) for more.
+
+{{% /steps %}}
+
+## Getting a player into the game
+
+Bodies and animations are exported with a script, never edited by hand in Godot. Everything
+Godot needs to do with them (the skeleton mapping, the racket and head attachments, the animation
+markers) happens on import, so exporting again is all it takes to update a player.
+
+{{% steps %}}
+
+### Add the player to the export list
+
+In `tools/blender/player_assets.json`, add the body: the `.blend` file, the name of its rig, the
+output file (`assets/models/players/<name>/<name>.glb`) and which Blender object is which mesh
+slot (`Body`, `Shirt`, `Shorts`, `Shoes`, `Hair`; further meshes such as the eyes keep any name).
+
+### Export
+
+```sh
+blender -b --python tools/blender/export_player_assets.py -- <name>
+```
+
+Without a name, every body and animation set in the list is exported. Paths in the list are
+relative to the game's project folder, with pelota-files checked out next to it. The `.blend`
+file is only read, never saved.
+
+### Set up the import once
+
+For a new body, open the exported `.glb` in Godot's import dock. Under **Skeleton → Retarget**,
+set the bone map to `scenes/player/rig/game_rig_bone_map.tres`, and set the import script to
+`scenes/player/rig/player_body_import.gd`. Use the existing materials in `assets/materials/` for
+the meshes, then reimport. These settings are kept in the `.glb.import` file next to it, so
+later exports reimport on their own.
+
+### Give the player their body
+
+Set the `.glb` as **Body** in the player's data.
 
 {{% /steps %}}
 

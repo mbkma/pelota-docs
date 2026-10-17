@@ -4,23 +4,26 @@ weight: 5
 ---
 
 **Short version:** the players are moved by recorded motion: running and walking captured from
-real people, and tennis strokes. These animations were made for other skeletons, so the game
-**retargets** them onto its players. While running, several running animations are **blended**
-by speed and direction, all kept in step so the feet never slide. A stroke plays **on top** of
-the running and is started at exactly the right moment, so that the racket arrives when the
-ball does.
+real people, and tennis strokes. All of them are **retargeted** onto one common skeleton, so they
+play on every player's body. While running, several running animations are **blended** by speed
+and direction, all kept in step so the feet never slide. A stroke plays **on top** of the
+running: it is prepared early, held, and swung so that the racket arrives when the ball does,
+and the arm reaches a little for a ball the swing would just miss.
 
 {{< fig src="images/screenshots/run-cycle-side.jpg" caption="One running cycle, seen from the side. The arm swings like in the recorded run, while the racket stays in the hand and points forward." >}}
 
 ## The skeleton and retargeting
 
-Every player has the same skeleton: a humanoid rig with about 150 bones, including fingers and a
-special bone in the right hand that holds the racket.
+Every player's body is a humanoid rig, and each body may have its own proportions. On import,
+Godot's **retargeting** maps the rig onto the game's **skeleton profile**
+(`scenes/player/rig/pelota_skeleton_profile.tres`): the standard humanoid bones (hips, spine,
+upper arm, …) plus a few more that matter for tennis: the bone in the right hand that holds the
+racket (`RacketGrip`), the twist bones of arms and legs, and helper bones at the shoulders and
+hips. Animations keep only the profile's bones, so every animation plays on every body.
 
 Animations from elsewhere (for example the motion-captured locomotion) use other skeletons, with
-other bone names and other rest poses. Godot's **retargeting** maps both onto a common humanoid
-profile (hips, spine, upper arm, …), so an animation made for one humanoid can play on another.
-The import of these animations then fixes what retargeting alone cannot:
+other bone names and other rest poses; retargeting maps them onto the same profile. The import of
+these animations then fixes what retargeting alone cannot:
 
 {{< fig src="images/diagrams/animation_import.svg" caption="The import steps that turn a recorded animation into a game animation." >}}
 
@@ -64,26 +67,57 @@ like a real runner.
 
 ## Strokes that meet the ball
 
-Each stroke animation has a marker named **hit** at the moment the racket meets the ball. For
-example, the forehand below hits at 0.567 s. Each stroke also has a **contact point**: where,
-relative to the player, the racket meets the ball in that animation. There are several versions
-for high and low balls (for example *forehand up* and *forehand down*), and the game picks the
-one closest to the height of the ball.
+Each stroke animation has a marker named **hit** at the moment the racket meets the ball, and a
+marker named **swing** where the racket is taken back the farthest and the forward swing starts.
+Where the racket meets the ball, the **contact point**, comes from the animation itself: the
+game poses the player's skeleton at the hit marker and takes the middle of the strings. So it
+fits every body and every version of the animation.
 
-{{< fig src="images/screenshots/forehand-sequence.jpg" caption="The forehand: ready, backswing, just before contact (0.55 s), follow-through, finish, recovery." >}}
+{{< fig src="images/screenshots/forehand-sequence.jpg" caption="The forehand: ready, backswing, just before contact, follow-through, finish, recovery." >}}
 
-When the ball is coming, the game predicts when it reaches the contact point. The swing starts
-exactly so long before that as the hit marker is into the animation. If the player is late, the
-swing is played faster (up to 1.8 times), and if even that is not enough, it starts part of the
-way through, with a shortened backswing.
+### Blending by height
 
-{{< fig src="images/plots/swing_timing.svg" caption="Three swings ending at the same contact: on time, late (sped up), and very late (backswing cut short)." >}}
+There are several versions of a stroke for different heights (for example *forehand down*,
+*forehand* and *forehand up*). The game blends the two whose contact points lie around the
+ball's height, so the racket meets a ball at any height in between. Both animations play on a
+common timeline: their markers are matched, and each plays at its own pace between them.
 
-While the stroke plays on top, the legs keep running underneath.
+### Prepare, hold, swing
+
+When the ball is coming, the game predicts when it reaches the contact point. Well before the
+swing would have to start, the player **prepares**: turns and takes the racket back to the swing
+marker, and **holds** it there while still running into position. When the ball is only as far
+away as the forward swing takes, the swing starts and reaches the hit marker with the ball, at
+its natural speed. If the ball comes faster, the preparation plays faster (up to 1.5 times) and
+starts later in the animation, skipping its quiet start, so the turn and the forward swing are
+always seen. Only a ball that leaves less time than the forward swing takes speeds the swing
+itself up (up to 1.8 times), and only if even that is not enough does it start part of the way
+through.
+
+While the player runs during the preparation, the legs and hips keep running underneath, in
+the direction the player runs; the spine takes over the turn of the stroke's hips, so the
+shoulders stay turned as in the stroke. From the forward swing on, the stroke's own footwork
+takes over. A player who only creeps (slower than 0.4 m/s)
+does not step at all.
+
+### The serve
+
+The server holds the ball in the left hand. At the **toss** marker, with the arm almost
+stretched, the ball leaves the hand: thrown so high that it falls 35 cm from its highest point
+before the racket meets it. The serve waits in the trophy position (its **swing** marker) until
+the falling ball is only one forward swing away.
+
+### Reaching for the ball
+
+The player rarely stands exactly where the swing meets the ball. Around contact, the racket arm
+**reaches** for the ball: the elbow bends or stretches and the shoulder turns, by up to 45 cm,
+so the strings meet the ball the swing alone would miss. How well the player stood still decides
+how good the shot is; the reach only shows it. The head follows the ball all the time.
 
 {{< callout type="info" >}}
-**In the code:** `scenes/player/player_animator.gd` (blending, cadence, strokes and markers),
-`scenes/player/player.gd` (when to start a swing), `scenes/player/model.gd` and its stroke
-contact points, `assets/models/player/mixamo_locomotion/mixamo_locomotion_import.gd` (the import
-steps above). [Animators](../../contribute/animation/) describes how to add new animations.
+**In the code:** `scenes/player/player_animator.gd` (blending, cadence, the stroke clock and its
+markers), `scenes/player/swing_timer.gd` (preparing, holding and swinging), `scenes/player/model.gd`
+(the body, contact points, height blends, reach and head), `scenes/player/rig/` (the skeleton
+profile, the import scripts and the reach), `tools/blender/export_player_assets.py` (the export
+from Blender). [Animators](../../contribute/animation/) describes how to add new animations.
 {{< /callout >}}

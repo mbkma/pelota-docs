@@ -29,8 +29,10 @@ matches already played. Your name is in your color, winners are highlighted.
 - Once you are out, **Simulate to the Final** plays the rest of the tournament and shows the
   champion.
 
-The tournament is saved after every round, so you can stop any time and pick it up again with
-**Continue US Open** in the main menu. Starting a new US Open replaces the saved one.
+The tournament is saved after every round, and your match in it after every point, so you can
+stop any time and pick it up again with **Continue US Open** in the main menu: a match you
+started continues from the point you were playing. Starting a new US Open replaces the saved
+one.
 
 ## How the other matches are decided
 
